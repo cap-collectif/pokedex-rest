@@ -19,7 +19,7 @@ seras pas particulièrement jugé sur les choix graphiques, mais les différents
 
 ### Sur la page de visualisation d'un Pokémon : 
 
-- Afficher les informations de ton choix sur le Pokémon sélectionné. À minima, la génération, le taux de capture, le nom et l'image. Tu les récupèreras dans l'API `pokeapi`, plus d'infos dans l'aide
+- Afficher les informations de ton choix sur le Pokémon sélectionné. À minima, le ou les types, un autre sprite si disponible, la taille, le nom et l'image. Tu les récupèreras dans l'API `pokeapi`, plus d'infos dans l'aide
 - Prévoir un lien de retour sur la page principale
 - Styliser également un peu la page, là encore, tu ne seras pas jugé sur tes choix, mais sur l'application de ceux-ci
 
@@ -27,14 +27,6 @@ seras pas particulièrement jugé sur les choix graphiques, mais les différents
 ## Aides, à lire : 
 
 - Pour le style, tu peux utiliser le fichier `globals.css` dans le répertoire `src/app`. Tu peux également utiliser [Tailwind](https://tailwindcss.com/) si tu le souhaites, déjà installé.
-- La documentation de l'API Graphql [est disponible ici](https://beta.pokeapi.co/graphql/console/). Elle est un peu rébarbative
-aux premiers abords, mais tu devrais trouver ton bonheur dans les champs `pokemon_v2_pokemon`et `pokemon_v2_pokemonspecies` de la documentation
-- On utilise Relay et pas Apollo à Capco, tu peux te renseigner [sur la doc si besoin/envie](https://relay.dev/), mais normalement tout est déjà en place. Petite particularité, utilise toujours des alias lorsque tu demandes des champs nommés `id`, comme ceci : 
-```
- pokemons: pokemon_v2_pokemon(limit: 151) {
-      pokemonId: id
- }
-```
-N'oublie pas de relancer `yarn relay` à chaque changement dans les requêtes graphql
+- La documentation de l'API [est disponible ici](https://pokeapi.co/docs/v2#info). C'est une API rest assez classique.
 - Lorsque tu auras terminé ton test, envoie le sur le repository. Si tu as des questions, des remarques, n'hésite pas à me contacter - julien.aguilar@cap-collectif.com
 - Prends le temps qu'il te faut, et bon courage !

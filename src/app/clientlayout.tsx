@@ -1,12 +1,18 @@
 'use client'
-import { initRelayEnvironment } from '@/RelayEnvironment'
-import { RelayEnvironmentProvider } from 'react-relay'
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Suspense } from 'react'
+
+const queryClient = new QueryClient()
 
 export default function ClientLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const environment = initRelayEnvironment()
-  return <RelayEnvironmentProvider environment={environment}>{children}</RelayEnvironmentProvider>
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Suspense>{children}</Suspense>
+    </QueryClientProvider>
+  )
 }

@@ -1,32 +1,37 @@
 /* eslint-disable @next/next/no-img-element */
-import { graphql, useLazyLoadQuery } from 'react-relay'
-import { PokemonQuery } from '../../__generated__/PokemonQuery.graphql'
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
 
-const GRAPHQL = graphql`
-  query PokemonQuery($pokemonId: Int!) {
-    pokemon: pokemon_v2_pokemon_by_pk(id: $pokemonId) {
-      name
-      sprites: pokemon_v2_pokemonsprites {
-        sprites
-      }
-      specy: pokemon_v2_pokemonspecy {
-        is_legendary
-      }
-    }
-  }
-`
+// TODO Complete this if needed
+export type Pokemon = {
+  data: any
+  id: number
+  name: string
+  sprites: { front_default: string }
+  weight: number
+}
+
+export const getPokemonByName = async (name: string) => {
+  const { data } = await axios(`https://pokeapi.co/api/v2/pokemon/${name}`)
+  return data
+}
 
 // TODO : Display the informations you want about the Pokemon, add a bit of styling
-export const Pokemon = ({ pokemonId }: { pokemonId: number }) => {
-  const data = useLazyLoadQuery<PokemonQuery>(GRAPHQL, { pokemonId })
+export const Pokemon = ({ pokemonName }: { pokemonName: string }) => {
+  const { data: pokemon, isPending } = useQuery({
+    queryKey: ['pokemon'],
+    queryFn: () => getPokemonByName(pokemonName),
+  })
+
+  if (isPending) return 'Loading'
 
   // To help
-  console.log(data)
+  console.log(pokemon)
 
   return (
     <div>
-      Legendary : {data.pokemon?.specy?.is_legendary ? 'Yes' : 'No'}
-      <img src={data.pokemon?.sprites[0].sprites.front_default} alt={data.pokemon?.name} />
+      Weight : {pokemon?.weight}
+      <img src={pokemon?.sprites.front_default} alt={pokemon?.name} />
     </div>
   )
 }
