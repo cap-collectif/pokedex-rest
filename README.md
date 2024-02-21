@@ -4,7 +4,6 @@
 - Clonez le repository, rendez vous dans le dossier
 - Assurez vous d'avoir une version de Node.js `>= v18.17.0`
 - Lancez `yarn install` (ou npm, npx, ou autre)
-- Lancez `yarn relay`
 - Lancez le projet avec `yarn dev`
 - Si tout va bien, le projet est accessible sur l'URL `http://localhost:3000`
 
