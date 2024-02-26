@@ -1,7 +1,7 @@
 # Test technique frontend - Cap collectif
 
 ## Installation, lancement et modalités de rendu
-- #### ⚠ Pour rendre ce test, vous devez créer une copie du repository sur votre compte Github (ou Gitlab / autre), et travailler sur celui-ci. Vous nous enverrez votre repository, complété ⚠ ####
+- #### ⚠ Pour rendre ce test, vous devez créer une copie du repository sur votre compte Github (ou Gitlab / autre), et travailler sur celui-ci. Vous créerez une branche, travaillerez sur celle-ci et nous enverrez le lien de la PR en guise de rendu ⚠ ####
 _________
 - Clonez le repository, rendez vous dans le dossier
 - Assurez vous d'avoir une version de Node.js `>= v18.17.0`
