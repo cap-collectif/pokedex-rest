@@ -1,13 +1,13 @@
 # Test technique frontend - Cap collectif
 
 ## Installation, lancement et modalités de rendu
-- #### ⚠ Pour rendre ce test, vous devez créer une copie du repository sur votre compte Github (ou Gitlab / autre), et travailler sur celui-ci. Vous créerez une branche, travaillerez sur celle-ci et nous enverrez le lien de la PR en guise de rendu ⚠ ####
+- #### ⚠ Pour rendre ce test, merci de cloner ce repository sur ton compte Github (ou Gitlab / autre), et travailler sur celui-ci. Tu créeras une branche, travailleras sur celle-ci et nous enverras le lien de la PR en guise de rendu ⚠ ####
 _________
-- Clonez le repository, rendez vous dans le dossier
-- Assurez vous d'avoir une version de Node.js `>= v18.17.0`
-- Lancez `yarn install` (ou npm, npx, ou autre)
-- Lancez le projet avec `yarn dev`
-- Si tout va bien, le projet est accessible sur l'URL `http://localhost:3000`
+- Clone le repository, rends toi dans le dossier
+- Assure toi d'avoir une version de Node.js `>= v18.17.0`
+- Lance `yarn install` (ou npm, npx, ou autre)
+- Lance le projet avec `yarn dev`
+- Si tout va bien, le projet est accessible sur l'URL `http://localhost:3000`. Sinon, contacte-nous.
 
 ## Le test
 Le test consiste à compléter une version minimaliste d'un Pokédex.
