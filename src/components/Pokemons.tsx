@@ -1,10 +1,8 @@
-/* eslint-disable @next/next/no-img-element */
 import { useQueries, useQuery } from '@tanstack/react-query'
 import axios from 'axios'
-import Link from 'next/link'
 import Pokemon, { getPokemonByName } from './Pokemon'
+import PokemonCard from '@/components/PokemonCard'
 
-// TODO : Add a bit of styling
 export const Pokemons = () => {
   const { data: list, isPending } = useQuery({
     queryKey: ['pokemonsData'],
@@ -26,22 +24,18 @@ export const Pokemons = () => {
 
   if (isPending) return 'Loading'
 
-  // To help
-  console.log(pokemons)
-
   return (
     <div className="p-4">
-      <h1 className="mb-5">Pokemons :</h1>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="flex flex-wrap justify-center gap-4">
         {pokemons.map((pokemon: Pokemon) => {
           if (!pokemon) return null
-          const sprite = pokemon?.sprites?.front_default
+
           return (
-            <div key={pokemon.id}>
-              <div>Name: {pokemon.name}</div>
-              <img src={sprite} alt={pokemon.name} />
-              <Link href={`/pokemon?name=${pokemon.name}`}>Infos</Link>
-            </div>
+            <PokemonCard
+              key={pokemon.id}
+              pokemon={pokemon}
+              sprite={pokemon?.sprites.other.dream_world.front_default}
+            />
           )
         })}
       </div>
