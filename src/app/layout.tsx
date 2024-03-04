@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import ClientLayout from './clientlayout'
 import './globals.css'
 import Header from '@/components/Header'
+import React from 'react'
 
 export const metadata: Metadata = {
   title: 'Pokedex',

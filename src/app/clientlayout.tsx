@@ -1,7 +1,7 @@
 'use client'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { Suspense } from 'react'
+import React, { Suspense } from 'react'
 
 const queryClient = new QueryClient()
 

@@ -2,16 +2,18 @@ import { useQueries, useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import PokemonCard from '@/components/PokemonCard'
 import { Pokemon } from '@/types/Pokemon'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import SearchBar from '@/components/SearchBar'
 import { getPokemonByName } from '@/hooks/usePokemonDetails'
 import Loader from '@/components/Loader'
+
+// TODO: implement pagination or infinite scrolling
 
 export const Pokemons = () => {
   const [searchInput, setSearchInput] = useState<string>('')
   const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[]>([])
 
-  const { data: list, isPending } = useQuery({
+  const { data: list, isLoading } = useQuery({
     queryKey: ['pokemonsData'],
     queryFn: () => axios('https://pokeapi.co/api/v2/pokemon?limit=151').then(response => response.data.results),
   })
@@ -22,7 +24,7 @@ export const Pokemons = () => {
         return {
           queryKey: ['pokemon', pokemon.name],
           queryFn: () => getPokemonByName(pokemon.name),
-          enabled: !!list && !isPending,
+          enabled: !!list && !isLoading,
         }
       }) ?? [],
   })
@@ -40,7 +42,7 @@ export const Pokemons = () => {
     }
   }
 
-  if (isPending) return <Loader/>
+  if (isLoading) return <Loader />
 
   return (
     <div className="p-4">

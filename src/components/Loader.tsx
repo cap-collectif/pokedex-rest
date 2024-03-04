@@ -1,7 +1,9 @@
+import Image from 'next/image'
+
 export const Loader = () => {
   return (
     <div className="flex justify-center items-center">
-      <img src={"pikachu-running.gif"} alt="Chargement..." />
+      <Image height={400} width={400} src={'/pikachu-running.gif'} alt="Loading..." />
     </div>
   )
 }

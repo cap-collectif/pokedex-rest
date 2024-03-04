@@ -1,20 +1,17 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import {Pokemon } from '@/types/Pokemon'
+import { Pokemon } from '@/types/Pokemon'
 
 interface PokemonCardProps {
   pokemon: Pokemon;
   sprite: string;
 }
-const PokemonCard = ({ pokemon, sprite }: PokemonCardProps) => {
 
+const PokemonCard = ({ pokemon, sprite }: PokemonCardProps) => {
 
   return (
     <Link href={`/pokemon?name=${pokemon.name}`} className="max-w-64">
-      <div
-        className="relative mx-auto rounded-lg bg-black overflow-hidden w-64 h-72 border-4 border-yellow-400 px-4"
-      >
-
+      <div className="relative mx-auto rounded-lg bg-black overflow-hidden w-64 h-72 border-4 border-yellow-400 px-4">
         <div className="relative mx-auto flex flex-col items-center">
           <div className="relative w-full h-40 flex justify-center items-center bg-white mt-4">
             <Image src={sprite} alt={pokemon.name} layout="fill" objectFit="contain" />
