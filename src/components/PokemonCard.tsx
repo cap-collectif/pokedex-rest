@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import {PokemonType } from '@/types/Pokemon'
+import {Pokemon } from '@/types/Pokemon'
 
 interface PokemonCardProps {
-  pokemon: PokemonType;
+  pokemon: Pokemon;
   sprite: string;
 }
 const PokemonCard = ({ pokemon, sprite }: PokemonCardProps) => {
