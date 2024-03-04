@@ -1,21 +1,22 @@
 import { useQueries, useQuery } from '@tanstack/react-query'
 import axios from 'axios'
-import { getPokemonByName } from './Pokemon'
 import PokemonCard from '@/components/PokemonCard'
-import { PokemonType } from '@/types/Pokemon'
+import { Pokemon } from '@/types/Pokemon'
 import { useState } from 'react'
 import SearchBar from '@/components/SearchBar'
+import { getPokemonByName } from '@/hooks/usePokemonDetails'
+import Loader from '@/components/Loader'
 
 export const Pokemons = () => {
   const [searchInput, setSearchInput] = useState<string>('')
-  const [filteredPokemons, setFilteredPokemons] = useState<PokemonType[]>([])
+  const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[]>([])
 
   const { data: list, isPending } = useQuery({
     queryKey: ['pokemonsData'],
     queryFn: () => axios('https://pokeapi.co/api/v2/pokemon?limit=151').then(response => response.data.results),
   })
 
-  const pokemonsList = useQueries<PokemonType[], PokemonType[]>({
+  const pokemonsList = useQueries<Pokemon[], Pokemon[]>({
     queries:
       list?.map((pokemon: { name: string }) => {
         return {
@@ -26,8 +27,7 @@ export const Pokemons = () => {
       }) ?? [],
   })
 
-  const pokemons: PokemonType[] = pokemonsList?.map(pokemon => pokemon.data)
-
+  const pokemons: Pokemon[] = pokemonsList?.map(pokemon => pokemon.data)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
     e.preventDefault()
@@ -40,14 +40,13 @@ export const Pokemons = () => {
     }
   }
 
-
-  if (isPending) return 'Loading'
+  if (isPending) return <Loader/>
 
   return (
     <div className="p-4">
       <SearchBar handleChange={handleChange} filteredPokemons={filteredPokemons} searchInput={searchInput} />
       <div className="flex flex-wrap justify-center gap-4">
-        {pokemons.map((pokemon: PokemonType) => {
+        {pokemons.map((pokemon: Pokemon) => {
           if (!pokemon) return null
           return (
             <PokemonCard
