@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import ClientLayout from './clientlayout'
 import './globals.css'
+import Header from '@/components/Header'
 
 export const metadata: Metadata = {
   title: 'Pokedex',
@@ -15,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Header/>
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
