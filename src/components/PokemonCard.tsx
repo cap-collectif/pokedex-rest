@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { PokemonType } from '@/types/Pokemon'
+import { PokemonSprites, PokemonType } from '@/types/Pokemon'
 
 interface PokemonCardProps {
   pokemon: PokemonType;
