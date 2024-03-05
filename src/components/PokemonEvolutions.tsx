@@ -10,7 +10,7 @@ export const PokemonEvolutions = ({ name, chain }: PokemonEvolutionsProps) => {
 
   return (
     <div className="flex flex-col items-center w-fit py-2 px-10 mt-10">
-      <h2>{name}'s evolution chain</h2>
+      <h2>{`${name}'s evolution chain`}</h2>
       <div className="flex gap-x-4">
         {chain.map((evol: Evolution, i) => (
           <div key={i} className="flex flex-col justify-between items-center">
