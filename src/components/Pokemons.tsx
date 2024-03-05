@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import { useQueries, useQuery } from '@tanstack/react-query'
 import axios from 'axios'
-import Pokemon, { getPokemonByName } from './Pokemon'
+import { Pokemon } from '../types/pokemon'
 import { PokemonCard } from './PokemonCard'
 import { useState } from 'react'
+import { getPokemonByName } from '@/utils/apiHandler'
 
-// TODO : Add a bit of styling
 export const Pokemons = () => {
   const [search, setSearch] = useState('')
   const { data: list, isPending } = useQuery({
@@ -29,13 +29,10 @@ export const Pokemons = () => {
 
   if (isPending) return 'Loading'
 
-  // To help
-  console.log(pokemons)
-
   return (
-    <div className="p-4 flex flex-col">
-      <h1 className="mb-5 text-2xl font-semibold text-center">Pokédex</h1>
-      <form className="flex self-center gap-x-4 items-center mb-10">
+    <div className="p-4 flex flex-col gap-y-10 max-w-5xl mx-auto">
+      <h1 className="text-center">Pokédex</h1>
+      <form className="flex flex-col self-center gap-4 items-center sm:flex-row">
         <label htmlFor="search" className="font-normal text-sm min-w-max">
           Search a Pokemon
         </label>
@@ -46,7 +43,7 @@ export const Pokemons = () => {
           placeholder="Mewtwo"
           autoComplete="off"
           onChange={e => setSearch(e.target.value)}
-          className="flex h-9 w-80 rounded-md border border-zinc-200 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-zinc-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-800 dark:placeholder:text-zinc-400 dark:focus-visible:ring-zinc-300"
+          className="flex h-9 w-full sm:w-80 sm:max-w-80 rounded-md border border-zinc-500 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-zinc-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-800 dark:placeholder:text-zinc-400 dark:focus-visible:ring-zinc-300"
         />
       </form>
       {filteredList.length === 0 && (
